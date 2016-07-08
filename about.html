@@ -1,0 +1,114 @@
+---
+layout: page
+title: "About"
+description: "Yet another programmer"
+header-img: "img/about-bg.jpg"
+---
+
+<!-- Language Selector -->
+<select onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+    <option value="0" selected> 中文 </option>
+    <option value="1"> English </option>
+</select>
+
+<!-- Chinese Version -->
+<div class="zh">
+    <p>Hi，我是<strong>张鹤</strong>，华侨大学计算机科学与技术学院二年级在读研究生，计算机应用技术，将于2017年6月毕业。我喜欢一切用计算机绘画的技术！</p>
+
+    <p>爱好写C/C++、计算机图像和视觉、写博客、看书；以前在<a href="http://blog.csdn.net/bluecol" target="_blank">CSDN</a>记录分享图像视觉。</p>
+
+    <p>更多关于我的论文和项目，可以戳我的<a href="http://herzhang.github.io/portfolio/">作品集</a>。</p>
+
+    <p>herzhang91 # gmail DOT com</p>
+</div>
+
+<!-- English Version -->
+<div class="en">
+    <p>Hi, my name is <strong>He Zhang</strong>. I am currently a second year M.S. student at Huaqiao University, working at <a href="http://cst.hqu.edu.cn/" target="_blank">PR&CVLab</a> advised by Xin Liu. I received my bachelor degree from Anyang Institute of Technology in 2014. My research interest is computer vision, image processing and computer graphics.</p>
+
+    <p>I have strong programming skills in C/C++, Matlab, and writing <a href="http://blog.csdn.net/bluecol" target="_blank">blogs</a>. </p>
+
+    <p>For more about my publications and projects, please visit my <a href="http://herzhang.github.io/portfolio/">Portfolio</a>.</p>
+
+    <p>Contact me：herzhang91 # gmail DOT com</p>
+</div>
+
+<!-- Handle Language Change -->
+<script type="text/javascript">
+    var $zh = document.querySelector(".zh");
+    var $en = document.querySelector(".en");
+    function onLanChange(index){
+        if(index == 0){
+            $zh.style.display = "block";
+            $en.style.display = "none";
+        }else{
+            $en.style.display = "block";
+            $zh.style.display = "none";
+        }
+    }
+    onLanChange(0);
+</script>
+
+
+
+{% if site.duoshuo_username %}
+<!-- 多说评论框 start -->
+<div class="comment">
+    <div class="ds-thread"
+    {% if site.duoshuo_username == "huxblog" %}
+        data-thread-id="1187623191091085319"
+    {% else %}
+        data-thread-key="{{site.duoshuo_username}}/about"
+    {% endif %}
+
+    data-title="{{page.title}}"
+    data-url="{{site.url}}/about/"></div>
+</div>
+<!-- 多说评论框 end -->
+
+<!-- Duoshuo hacking -->
+<input id="dsUser" type="hidden" value="{{site.duoshuo_username}}"  />
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User hacking by Hux
+    var _user = document.getElementById('dsUser').value;
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+{% endif %}
+
+
+{% if site.disqus_username %}
+<!-- disqus 评论框 start -->
+<div class="comment">
+    <div id="disqus_thread" class="disqus-thread">
+
+    </div>
+</div>
+<!-- disqus 评论框 end -->
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "{{site.disqus_username}}";
+    var disqus_identifier = "{{site.disqus_username}}/{{page.url}}";
+    var disqus_url = "{{site.url}}{{page.url}}";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+{% endif %}
